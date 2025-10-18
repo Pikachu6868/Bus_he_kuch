@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My bndiiiii</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            color: #5d3a3a;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slides-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Slide 1 - Cover with tissue heart */
+        .slide-1 {
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+        }
+
+        .tissue-heart {
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            position: relative;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: rotate(-5deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .tissue-heart:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 175, 189, 0.1) 20px,
+                rgba(255, 175, 189, 0.1) 21px
+            );
+            border-radius: 5px;
+        }
+
+        .heart-shape {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: #ff6b6b;
+            transform: rotate(45deg);
+        }
+
+        .heart-shape:before, .heart-shape:after {
+            content: '';
+            width: 60px;
+            height: 60px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart-shape:before {
+            top: -30px;
+            left: 0;
+        }
+
+        .heart-shape:after {
+            top: 0;
+            left: -30px;
+        }
+
+        .cover-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #d44d5c;
+            margin-top: 30px;
+            z-index: 1;
+        }
+
+        /* Slide 2 - Tissue layers with photos */
+        .slide-2 {
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+        }
+
+        .tissue-layers {
+            position: relative;
+            width: 320px;
+            height: 400px;
+            margin: 20px auto;
+        }
+
+        .tissue-layer {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.5s ease;
+        }
+
+        .layer-1 {
+            width: 300px;
+            height: 380px;
+            top: 0;
+            left: 0;
+            z-index: 5;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 107, 107, 0.1) 20px,
+                rgba(255, 107, 107, 0.1) 21px
+            );
+        }
+
+        .layer-2 {
+            width: 290px;
+            height: 370px;
+            top: 5px;
+            left: 5px;
+            z-index: 4;
+            transform: rotate(2deg);
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(161, 196, 253, 0.1) 20px,
+                rgba(161, 196, 253, 0.1) 21px
+            );
+        }
+
+        .layer-3 {
+            width: 280px;
+            height: 360px;
+            top: 10px;
+            left: 10px;
+            z-index: 3;
+            transform: rotate(-1deg);
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 20px,
+                rgba(194, 233, 251, 0.1) 20px,
+                rgba(194, 233, 251, 0.1) 21px
+            );
+        }
+
+        .layer-4 {
+            width: 270px;
+            height: 350px;
+            top: 15px;
+            left: 15px;
+            z-index: 2;
+            transform: rotate(3deg);
+            background: repeating-linear-gradient(
+                135deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 175, 189, 0.1) 20px,
+                rgba(255, 175, 189, 0.1) 21px
+            );
+        }
+
+        .layer-5 {
+            width: 260px;
+            height: 340px;
+            top: 20px;
+            left: 20px;
+            z-index: 1;
+            transform: rotate(-2deg);
+            background: repeating-linear-gradient(
+                180deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 195, 160, 0.1) 20px,
+                rgba(255, 195, 160, 0.1) 21px
+            );
+        }
+
+        .photo-placeholder {
+            width: 80%;
+            height: 60%;
+            background-color: #f5f5f5;
+            border: 2px dashed #ffafbd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            font-size: 3rem;
+            color: #ff6b6b;
+            overflow: hidden;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .birthday-wish {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #d44d5c;
+            margin: 10px 0;
+        }
+
+        /* Slide 3 - Romantic text with photo */
+        .slide-3 {
+            background: linear-gradient(135deg, #d4fc79, #96e6a1);
+        }
+
+        .romantic-container {
+            display: flex;
+            width: 90%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .romantic-text {
+            flex: 2;
+            padding-right: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .photo-corner {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .corner-photo {
+            width: 150px;
+            height: 150px;
+            background-color: #f5f5f5;
+            border: 5px solid #ffafbd;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .corner-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .funny-comment {
+            font-style: italic;
+            color: #5d3a3a;
+            text-align: center;
+            font-size: 0.9rem;
+            background: rgba(255, 175, 189, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-3px);
+        }
+
+        /* Music player */
+        .music-player {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .music-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #d44d5c;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tissue-heart {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .cover-text {
+                font-size: 1.8rem;
+            }
+            
+            .tissue-layers {
+                width: 280px;
+                height: 350px;
+            }
+            
+            .romantic-container {
+                flex-direction: column;
+            }
+            
+            .photo-corner {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Music Player -->
+    <div class="music-player">
+        <button class="music-btn" id="playBtn">▶️</button>
+        <button class="music-btn" id="pauseBtn">⏸️</button>
+        <span>Romantic Song</span>
+    </div>
+
+    <!-- Slides Container -->
+    <div class="slides-container">
+        <!-- Slide 1 - Cover with tissue heart -->
+        <div class="slide slide-1 active">
+            <div class="tissue-heart">
+                <div class="heart-shape"></div>
+                <h2 class="cover-text">To My Beautiful Wife</h2>
+                <p style="margin-top: 15px; z-index: 1;">Jaan g mera Permanent Sakooon</p>
+            </div>
+        </div>
+
+        <!-- Slide 2 - Tissue layers with photos -->
+        <div class="slide slide-2">
+            <div class="tissue-layers">
+                <div class="tissue-layer layer-1">
+                    <h2 class="birthday-wish">Happy Birthday!</h2>
+                    <p>My love for you grows every day</p>
+                </div>
+                <div class="tissue-layer layer-2">
+                    <div class="photo-placeholder">
+                        <img src="https://drive.google.com/uc?export=view&id=1D0CGazHaxSAmrUzPU2QOwKzei66kogza" alt="Our beautiful memories" onerror="this.parentElement.innerHTML='📸'">
+                    </div>
+                    <p>Our beautiful memories</p>
+                </div>
+                <div class="tissue-layer layer-3">
+                    <div class="photo-placeholder">
+                        <img src="https://drive.google.com/uc?export=view&id=1ham0nSsiJpTuJTh4bGK0ZRzGWpEXe9t1" alt="Forever in my heart" onerror="this.parentElement.innerHTML='❤️'">
+                    </div>
+                    <p>Forever in my heart</p>
+                </div>
+                <div class="tissue-layer layer-4">
+                    <div class="photo-placeholder">
+                        <img src="https://drive.google.com/uc?export=view&id=1R-tBO7SBIL6-gqwktcRqcQ5CwweyYX8S" alt="Your beautiful smile" onerror="this.parentElement.innerHTML='😊'">
+                    </div>
+                    <p>Your beautiful smile</p>
+                </div>
+                <div class="tissue-layer layer-5">
+                    <div class="photo-placeholder">
+                        <img src="https://drive.google.com/uc?export=view&id=1ELTcRSu7OJldwVIwKtrF9kPsQJIXE20H" alt="You are my star" onerror="this.parentElement.innerHTML='🌟'">
+                    </div>
+                    <p>You are my star</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 - Romantic text with photo -->
+        <div class="slide slide-3">
+            <div class="romantic-container">
+                <div class="romantic-text">
+                    <h2>My Dearest Love,</h2>
+                    <p>On this special day, I want to remind you how much you mean to me. Your smile brightens my whole day or english ni boli jaati yrrr.....to ab upun apne style mn aata he.</p>
+                    <p>tooo tm meri jaan ho wese to hr din special hta he lkn ajj ka kuch zyada special he yriiii I Love youuu bhtt bht zyada aaap se hi hn mn or bus apka hi rhn ga.</p>
+                    <p>ab meri pyaari si shehzadi cutiiii paglu BV ka birthday he to I want to promise you that Mehroz ka Pyaarrr for you will only grow stronger with guzring every sevond.</p>
+                    <p>Happy birthday to the sweetest and most cute amd beautiful meri bv who completes me in every way. I love you more than words could ever express.</p>
+                </div>
+                <div class="photo-corner">
+                    <div class="corner-photo">
+                        <img src="https://drive.google.com/uc?export=view&id=1eJS9lYHNQ9dAVBWle9NfrUnD6NzSjsHh" alt="Our photo" onerror="this.innerHTML='💑'">
+                    </div>
+                    <div class="funny-comment">
+                        "aaaap ab or brriii ho gai hn, but don't worry - you're still younger than me! 😉"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prevBtn">Previous</button>
+        <button class="nav-btn" id="nextBtn">Next</button>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="https://drive.google.com/uc?export=download&id=18HVAzANmk66kIX7oPOfRJ2ORAUJuNNHF" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Slide navigation
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentSlide = 0;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            currentSlide = n;
+            slides[currentSlide].classList.add('active');
+        }
+
+        prevBtn.addEventListener('click', () => {
+            let newSlide = currentSlide - 1;
+            if (newSlide < 0) newSlide = slides.length - 1;
+            showSlide(newSlide);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            let newSlide = currentSlide + 1;
+            if (newSlide >= slides.length) newSlide = 0;
+            showSlide(newSlide);
+        });
+
+        // Music controls
+        const bgMusic = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+
+        playBtn.addEventListener('click', () => {
+            bgMusic.play();
+        });
+
+        pauseBtn.addEventListener('click', () => {
+            bgMusic.pause();
+        });
+
+        // Auto-play music on user interaction (required by browsers)
+        document.body.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play();
+            }
+        }, { once: true });
+
+        // Add tissue paper texture animation
+        document.querySelectorAll('.tissue-layer').forEach(layer => {
+            layer.addEventListener('mouseenter', () => {
+                layer.style.transform = `rotate(${Math.random() * 10 - 5}deg) translateY(-5px)`;
+            });
+            
+            layer.addEventListener('mouseleave', () => {
+                layer.style.transform = 'rotate(0deg) translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
